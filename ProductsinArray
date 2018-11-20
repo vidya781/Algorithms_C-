@@ -1,0 +1,76 @@
+Products in array
+
+#include<iostream>
+using namespace std;
+
+int countPairs(int arr[],int n)
+{
+   int result = 0;
+   
+    for (int i = 0; i < n; i++)
+    {
+      for(int j = i+1; j < n; j++)
+       {
+          int product = arr[i]*arr[j];
+       
+             // find product in an array
+              for(int k = 0; k < n; k++)
+               {
+                  if(arr[i] == product)
+                   {
+                      result++;
+                      break
+                    }
+                }
+             }
+          }
+       
+         return result;
+
+  }
+
+int main()
+{
+   int arr[] = {6,2,4,12,5,3};
+   int n = sizeof(arr)/sizeof(arr[0]);
+   cout << countPairs(arr,n);
+   return 0;
+ }
+
+TC: O(n^3)
+--------------------------------------------------
+
+int countPairs(int arr[],int n)
+{
+  int result = 0;
+  
+  set< int >Hash;
+
+   // Insert all array elems into set
+   for(int i = 0; i < n; i++)
+        Hash.insert(arr[i]);
+
+   for(int i = 0; i < n; i++)
+    {
+        for(int j = i + 1; j < n; j++)
+         {
+           int product = arr[i] * arr[j];
+
+            if(hash.find(product) != Hash.end())
+               result++;
+         }
+     }
+
+    return result;
+
+}
+
+int main()
+{
+  int arr[] = {6,2,4,12,5,3};
+  int n = sizeof(arr)/sizeof9arr[0]);
+  cout << countPairs(arr,n);
+  return 0;
+  }
+
+TC : O(n^2)
